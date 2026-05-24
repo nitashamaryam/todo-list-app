@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Todo & Planner App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="auth-screen" class="screen">
+        <div class="auth-container">
+            <h2>Welcome to Smart Planner</h2>
+            <p>Manage your tasks, notes, and alarms seamlessly.</p>
+            
+            <form id="login-form">
+                <input type="email" id="auth-email" placeholder="Email Address" required>
+                <input type="password" id="auth-password" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary">Login with Email</button>
+            </form>
+
+            <div class="divider">OR</div>
+
+            <button id="google-login-btn" class="btn btn-google">
+                <img src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="Google Icon" width="20">
+                Sign in with Google
+            </button>
+        </div>
+    </div>
+
+    <div id="dashboard-screen" class="screen hidden">
+        <div class="dashboard-container">
+            <aside class="sidebar">
+                <h3>Smart Planner</h3>
+                <nav>
+                    <button class="nav-btn active" onclick="switchTab('todo')">📝 Tasks & Reminders</button>
+                    <button class="nav-btn" onclick="switchTab('alarms')">⏰ Set Alarms</button>
+                    <button class="nav-btn" onclick="switchTab('notes')">📓 Personal Notes</button>
+                </nav>
+                <button id="logout-btn" class="btn btn-danger">Logout</button>
+            </aside>
+
+            <main class="main-content">
+                <section id="todo-tab" class="tab-content">
+                    <h2>Tasks & Reminders</h2>
+                    <div class="input-group">
+                        <input type="text" id="todo-input" placeholder="What needs to be done?">
+                        <input type="datetime-local" id="todo-time">
+                        <button onclick="addTodo()" class="btn btn-success">Add Task</button>
+                    </div>
+                    <ul id="todo-list" class="list-container"></ul>
+                </section>
+
+                <section id="alarms-tab" class="tab-content hidden">
+                    <h2>Set Alarm</h2>
+                    <div class="input-group">
+                        <input type="time" id="alarm-time">
+                        <button onclick="setAlarm()" class="btn btn-success">Set Alarm</button>
+                    </div>
+                    <ul id="alarm-list" class="list-container"></ul>
+                </section>
+
+                <section id="notes-tab" class="tab-content hidden">
+                    <h2>Personal Notes Diary</h2>
+                    <div class="notes-wrapper">
+                        <input type="text" id="note-title" placeholder="Note Title...">
+                        <textarea id="note-content" placeholder="Write your notes here..." rows="6"></textarea>
+                        <button onclick="saveNote()" class="btn btn-success">Save Note</button>
+                    </div>
+                    <div id="notes-list" class="notes-grid"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
